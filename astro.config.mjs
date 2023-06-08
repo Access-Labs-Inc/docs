@@ -11,11 +11,31 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: 'Guides',
+          label: 'Basics',
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'API Guide', link: '/guides/api/' },
+            { label: 'Introduction', link: '/ecosystem/introduction/' },
+            { label: 'Deeper explanation', link: '/ecosystem/understanding/' },
           ],
+        },
+        {
+          label: 'Creator Guides',
+          items: [
+            { label: 'Become creator', link: '/creator-guides/new-creator/' },
+            { label: 'How to integrate your app', link: '/creator-guides/integration/' },
+            { label: 'How to write custom integration', link: '/creator-guides/custom_integration/' },
+            { label: 'How to use API', link: '/creator-guides/api/' },
+          ],
+        },
+        {
+          label: 'Integration Guides',
+          items: [
+            { label: 'How to integrate your app', link: '/integration-guides/integration/' },
+            { label: 'How to write custom integration', link: '/integration-guides/custom_integration/' },
+          ],
+        },
+        {
+          label: 'Solana',
+          autogenerate: { directory: 'solana' },
         },
         {
           label: 'Reference',

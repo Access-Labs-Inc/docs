@@ -1,0 +1,218 @@
+---
+title: API Reference
+description: Reference of exposed API for creators
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Before diving into this refererence you should first read [How to use API](../guides/api.md) guide.
+
+## User details
+
+User details contain metadata that are not present on Solana's blockchain yet are
+important for our HUB (Name, Description, Website, Images...). 
+
+### Creator's metadata details 
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/user
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl https://go-api.accessprotocol.co/user \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ACS_API_KEY"
+```
+</TabItem>
+</Tabs>
+
+Response:
+```json
+{"EnabledEmailAutoSubs":false,"Pubkey":"7Q34nmDP1srbYSQJH5b43heZpPtsssiRZa17hLnx5Gqx","Role":"admin","OwnedPool":{"Pubkey":"2hQSDVwJLbtwHzi3CKj8pmiQzLyfKZs5ZDhT1QZdHXv3","Name":"Telegram","Benefits":"","Description":"Telegram test pool","Website":"https://accessprotocol.co","Email":"ladi@accessprotocol.co","LogoImageURL":"https://ap-staging.fra1.digitaloceanspaces.com/d8760345-fdf1-11ed-bd11-8e0f9ac77f3d","HeroImageURL":"https://ap-staging.fra1.digitaloceanspaces.com/d87bf5d3-fdf1-11ed-bd11-8e0f9ac77f3d","ProfileImageURL":"https://ap-staging.fra1.digitaloceanspaces.com/d8677cc6-fdf1-11ed-bd11-8e0f9ac77f3d","UserPubkey":"7Q34nmDP1srbYSQJH5b43heZpPtsssiRZa17hLnx5Gqx","CollectEmails":false,"DisplayFE":true,"CreatedAt":"2023-05-29T09:24:27.966677+02:00","UpdatedAt":"2023-05-29T09:24:27.969427+02:00"},"Username":"7Q34...5Gqx","CreatedAt":"2023-05-29T09:22:52.411033+02:00","UpdatedAt":"2023-05-29T09:22:52.411033+02:00"}
+```
+
+## CSV exports
+
+:::caution[3-step process]
+This process can take a while to prepare the CSV file so we require you
+to: 
+1) Request the file and receive reference ID
+2) Wait a few seconds (allow our backend prepare and upload the file to storage)
+3) Pull the CSV file with reference ID
+:::
+
+### Get emails of all supporters
+
+#### Step 1: Request the file
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+POST https://go-api.accessprotocol.co/file/emails
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X POST https://go-api.accessprotocol.co/file/emails \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ACS_API_KEY"
+```
+</TabItem>
+</Tabs>
+
+and you will get JSON with reference ID like so:
+
+```
+"5e491ab8-17f2-46ee-80d4-7eec9017f6be"
+```
+
+#### Step 2: Wait a few seconds ☕
+
+How long? It all should be matter of 1-2s yet not guaranteed.
+If you don't want to wait you can create a loop where you try to get
+the file with Step 3 and if it fails (returns 404) you can re-try again with 1s delay. 
+
+#### Step 3: Download the file
+
+Params:
+- `reference_id` you get it as output of Step 1 above
+
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/file/link/{reference_id}
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl https://go-api.accessprotocol.co/file/link/{reference_id} \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ACS_API_KEY"
+```
+</TabItem>
+</Tabs>
+
+and you will receive the content of CSV file or HTTP status 404 if file is not yet ready or doesn't exists.
+
+### Get supporters report
+
+#### Step 1: Request the file
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+POST https://go-api.accessprotocol.co/file/supporters
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X POST https://go-api.accessprotocol.co/file/supporters \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ACS_API_KEY"
+```
+</TabItem>
+</Tabs>
+
+and you will get JSON with reference ID like so:
+
+```
+"5e491ab8-17f2-46ee-80d4-7eec9017f6be"
+```
+
+#### Step 2: Wait a few seconds ☕
+
+How long? It all should be matter of 1-2s yet not guaranteed.
+If you don't want to wait you can create a loop where you try to get
+the file with Step 3 and if it fails (returns 404) you can re-try again with 1s delay. 
+
+#### Step 3: Download the file
+
+Params:
+- `reference_id` you get it as output of Step 1 above
+
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/file/link/{reference_id}
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl https://go-api.accessprotocol.co/file/link/{reference_id} \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ACS_API_KEY"
+```
+</TabItem>
+</Tabs>
+
+### Get rewards report
+
+#### Step 1: Request the file
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+POST https://go-api.accessprotocol.co/file/rewards
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X POST https://go-api.accessprotocol.co/file/rewards \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ACS_API_KEY"
+```
+</TabItem>
+</Tabs>
+
+and you will get JSON with reference ID like so:
+
+```
+"5e491ab8-17f2-46ee-80d4-7eec9017f6be"
+```
+
+#### Step 2: Wait a few seconds ☕
+
+How long? It all should be matter of 1-2s yet not guaranteed.
+If you don't want to wait you can create a loop where you try to get
+the file with Step 3 and if it fails (returns 404) you can re-try again with 1s delay. 
+
+#### Step 3: Download the file
+
+Params:
+- `reference_id` you get it as output of Step 1 above
+
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/file/link/{reference_id}
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl https://go-api.accessprotocol.co/file/link/{reference_id} \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ACS_API_KEY"
+```
+</TabItem>
+</Tabs>
