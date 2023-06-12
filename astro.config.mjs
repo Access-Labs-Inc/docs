@@ -7,7 +7,7 @@ export default defineConfig({
     starlight({
       title: 'Access Protocol Docs',
       social: {
-        github: 'https://github.com/Access-Labs-Inc/api-docs',
+        github: 'https://github.com/Access-Labs-Inc/docs',
       },
       sidebar: [
         {
