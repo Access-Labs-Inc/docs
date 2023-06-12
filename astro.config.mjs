@@ -28,7 +28,8 @@ export default defineConfig({
           label: 'Integration Guides',
           items: [
             { label: 'Quick start', link: '/integration-guides/integration/' },
-            { label: 'Custom integration (Node.js)', link: '/integration-guides/custom_integration/' },
+            { label: 'How to use Node.js with CLI examples', link: '/integration-guides/custom_integration/' },
+            { label: 'Start new Next.js app with template', link: '/integration-guides/nextjs_integration/' },
           ],
         },
         {
