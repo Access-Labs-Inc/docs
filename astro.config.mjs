@@ -21,16 +21,14 @@ export default defineConfig({
           label: 'Creator Guides',
           items: [
             { label: 'Become creator', link: '/creator-guides/new-creator/' },
-            { label: 'How to integrate your app', link: '/creator-guides/integration/' },
-            { label: 'How to write custom integration', link: '/creator-guides/custom_integration/' },
             { label: 'How to use API', link: '/creator-guides/api/' },
           ],
         },
         {
           label: 'Integration Guides',
           items: [
-            { label: 'How to integrate your app', link: '/integration-guides/integration/' },
-            { label: 'How to write custom integration', link: '/integration-guides/custom_integration/' },
+            { label: 'Quick start', link: '/integration-guides/integration/' },
+            { label: 'Custom integration (Node.js)', link: '/integration-guides/custom_integration/' },
           ],
         },
         {
