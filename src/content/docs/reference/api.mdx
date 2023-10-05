@@ -34,7 +34,62 @@ curl https://go-api.accessprotocol.co/user \
 
 Response:
 ```json
-{"EnabledEmailAutoSubs":false,"Pubkey":"7Q34nmDP1srbYSQJH5b43heZpPtsssiRZa17hLnx5Gqx","Role":"admin","OwnedPool":{"Pubkey":"2hQSDVwJLbtwHzi3CKj8pmiQzLyfKZs5ZDhT1QZdHXv3","Name":"Telegram","Benefits":"","Description":"Telegram test pool","Website":"https://accessprotocol.co","Email":"ladi@accessprotocol.co","LogoImageURL":"https://ap-staging.fra1.digitaloceanspaces.com/d8760345-fdf1-11ed-bd11-8e0f9ac77f3d","HeroImageURL":"https://ap-staging.fra1.digitaloceanspaces.com/d87bf5d3-fdf1-11ed-bd11-8e0f9ac77f3d","ProfileImageURL":"https://ap-staging.fra1.digitaloceanspaces.com/d8677cc6-fdf1-11ed-bd11-8e0f9ac77f3d","UserPubkey":"7Q34nmDP1srbYSQJH5b43heZpPtsssiRZa17hLnx5Gqx","CollectEmails":false,"DisplayFE":true,"CreatedAt":"2023-05-29T09:24:27.966677+02:00","UpdatedAt":"2023-05-29T09:24:27.969427+02:00"},"Username":"7Q34...5Gqx","CreatedAt":"2023-05-29T09:22:52.411033+02:00","UpdatedAt":"2023-05-29T09:22:52.411033+02:00"}
+{
+  "EnabledEmailAutoSubs":false,
+  "Pubkey":"7Q34nmDP1srbYSQJH5b43heZpPtsssiRZa17hLnx5Gqx",
+  "Role":"admin",
+  "OwnedPool": {
+    "Pubkey":"2hQSDVwJLbtwHzi3CKj8pmiQzLyfKZs5ZDhT1QZdHXv3",
+    "Name":"Telegram",
+    "Benefits":"",
+    "Description":"Telegram test pool",
+    "Website":"https://accessprotocol.co",
+    "Email":"ladi@accessprotocol.co",
+    "LogoImageURL":"...",
+    "HeroImageURL":"...",
+    "ProfileImageURL":"...",
+    "UserPubkey":"7Q34nmDP1srbYSQJH5b43heZpPtsssiRZa17hLnx5Gqx",
+    "CollectEmails":false,
+    "DisplayFE":true,
+    "CreatedAt":"2023-05-29T09:24:27.966677+02:00",
+    "UpdatedAt":"2023-05-29T09:24:27.969427+02:00"
+  },
+  "Username":"7Q34...5Gqx",
+  "CreatedAt":"2023-05-29T09:22:52.411033+02:00",
+  "UpdatedAt":"2023-05-29T09:22:52.411033+02:00"
+}
+```
+
+### User's list of pools
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/user/{address}/pools
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl https://go-api.accessprotocol.co/user/{address}/pools \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ACS_API_KEY"
+```
+</TabItem>
+</Tabs>
+
+returns JSON object with all pools and locks:
+
+Response:
+```json
+{
+  "2hgUBN2BH175iB7vkfGEQUbrFf6XH7LmhVd95LBMsXrw":2200000000,
+  "3ZvSvYThM7775oqziL6ihb6DhjduwMiQ4QAK68qWojWj":1000000000,
+  "5NXhYbc54BtRV57kRcJBiB4xSkaAicN7KzkVuc7NPTuU":0,
+  ...
+}
 ```
 
 ## CSV exports
@@ -216,3 +271,313 @@ curl https://go-api.accessprotocol.co/file/link/{reference_id} \
 ```
 </TabItem>
 </Tabs>
+
+## Pools 
+
+### Get list of active pools
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/pools
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X GET https://go-api.accessprotocol.co/pools \
+    -H "Content-Type: application/json" \
+```
+</TabItem>
+</Tabs>
+
+and you will get JSON with array of objects representing pools:
+
+```
+[
+  {
+    "Pubkey": "2hgUBN2BH175iB7vkfGEQUbrFf6XH7LmhVd95LBMsXrw",
+    "Name": "Kira Bursky",
+    "Benefits": "...",
+    "Website": "https://linktr.ee/allaroundartsy",
+    "Email": "kira@allaroundartsy.com",
+    "LogoImageURL": "...",
+    "HeroImageURL": "...",
+    "ProfileImageURL": "...",
+    "UserPubkey": "7VUo3uKuv7JMoXdPJcBKUCQDRxEBTwSpuzYEgGoeqoZh",
+    "CollectEmails": false,
+    "DisplayFE": true,
+    "CategoryName": "NFT,Community",
+    "CreatedAt": "2023-04-28T16:27:46.172356Z",
+    "UpdatedAt": "2023-06-04T17:28:34.918966Z",
+    "Minimum": 2000000000,
+    "TotalStaked": 30939662300000,
+    "StakersPart": 50
+  },
+  ...
+]
+```
+
+### Get pools ordered by featured
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/pools/featured
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X GET https://go-api.accessprotocol.co/pools/featured \
+    -H "Content-Type: application/json" \
+```
+</TabItem>
+</Tabs>
+
+and you will get JSON with array of objects representing pools:
+
+```
+[
+  {
+    "Pool": "4sNprFdbPeV8eotXXbW6EhzWDTUXThswnXtU8Ge3o8zM",
+    "LockedScore": 6,
+    "UsersScore": 5,
+    "WeeklyLockedScore": 40,
+    "WeeklyUsersScore": 36,
+    "WeeklyLockedGrowthScore": 36,
+    "WeeklyUserGrowthScore": 36,
+    "FeaturedPoolsFixedPosition": 1,
+    "RandomnessOffset": 0
+  },
+  ...
+]
+```
+
+### Get list of pools with user counts
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/pools/user_count
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X GET https://go-api.accessprotocol.co/pools/user_count \
+    -H "Content-Type: application/json" \
+```
+</TabItem>
+</Tabs>
+
+and you will get JSON with object representing pools with user counts:
+
+```
+{
+  "2hgUBN2BH175iB7vkfGEQUbrFf6XH7LmhVd95LBMsXrw": 2130,
+  "366tMwBtL5eMVfYjo89LdLCRVpjrH58bz8MNWLYcX27n": 1178,
+  ...
+}
+```
+
+### Get list of pools with locked amount
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/pools/locked
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X GET https://go-api.accessprotocol.co/pools/locked \
+    -H "Content-Type: application/json" \
+```
+</TabItem>
+</Tabs>
+
+and you will get JSON with object representing pools with user counts:
+
+```
+{
+  "2hgUBN2BH175iB7vkfGEQUbrFf6XH7LmhVd95LBMsXrw": 22439662300000,
+  "366tMwBtL5eMVfYjo89LdLCRVpjrH58bz8MNWLYcX27n": 1896734370000,
+  ...
+}
+```
+
+### Get list of pools with rewards
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/pools/rewards
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X GET https://go-api.accessprotocol.co/pools/rewards \
+    -H "Content-Type: application/json" \
+```
+</TabItem>
+</Tabs>
+
+and you will get JSON with array of objects representing pools with rewards:
+
+```
+[
+  {
+    "Pool": "D9C7Yf5euSjpQ8Wo8XwJP7CWymm54oomeREkogiNf4yS",
+    "Total": 240439918997178,
+    "Claimed": 232878854135993
+  },
+  ...
+]
+```
+
+## Pool details
+
+### Get pool data
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/pool/{address}
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X GET https://go-api.accessprotocol.co/pool/{address} \
+    -H "Content-Type: application/json" \
+```
+</TabItem>
+</Tabs>
+
+and you will get JSON object with:
+
+```
+{
+  "Pubkey": "",
+  "Website": "https://linktr.ee/trimurwahyudi",
+  "Email":"jiwolegowo@gmail.com",
+  "LogoImageURL":"...",
+  "HeroImageURL":"...",
+  "ProfileImageURL":"...",
+  "UserPubkey":"4WFS9D8GW9rU2TKfBcvqdXFdzZg37W5bf5mkPUMjaxUf",
+  "EmailSubscriptions":[
+    {
+      "UserPubkey":"DrX8BE6kSnByJ7pWoRhbRo8rjKkNpSyMJghU5rosEa9P",
+      "PoolPubkey":"4sNprFdbPeV8eotXXbW6EhzWDTUXThswnXtU8Ge3o8zM",
+      "CreatedAt":"2023-10-02T09:43:29.545082Z",
+      "UpdatedAt":"2023-10-02T09:43:29.545082Z"
+    },
+    ...
+  ],
+  "FeaturedPoolsFixedPosition":1,
+  "CollectEmails":false,
+  "DisplayFE":true,
+  "CategoryName":"NFT",
+  "Motivation":"artist",
+  "Showcases":"https://linktr.ee/trimurwahyudi",
+  "CreatedAt":"2023-09-29T11:01:18.031194Z",
+  "UpdatedAt":"2023-10-02T15:28:45.359653Z"
+}
+```
+
+## Token supply
+
+### Get total supply
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/token/supply/total
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X GET https://go-api.accessprotocol.co/token/supply/total \
+    -H "Content-Type: application/json" \
+```
+</TabItem>
+</Tabs>
+
+and you will get text with number:
+
+```
+86735581885.276672
+```
+
+### Get circulating supply
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/token/supply/circulating
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X GET https://go-api.accessprotocol.co/token/supply/circulating \
+    -H "Content-Type: application/json" \
+```
+</TabItem>
+</Tabs>
+
+and you will get text with number:
+
+```
+30436895695.035919
+```
+
+## Stats
+
+### Get stats on different kinds: postitive_stake, active_users, cumulative_stake, locked_users, locked_delta, total_creators, subscription
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/stats/{kind}
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl -X GET https://go-api.accessprotocol.co/token/supply/total \
+    -H "Content-Type: application/json" \
+```
+</TabItem>
+</Tabs>
+
+and you will object with past 30 days data:
+
+```
+{
+  "UntilDate": "2023-10-05T00:00:00Z",
+  "Vals": [...]
+}
+```
