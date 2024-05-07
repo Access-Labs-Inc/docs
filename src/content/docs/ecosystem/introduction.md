@@ -5,7 +5,7 @@ description: Introduction to Access Protocol ecosystem
 
 :::caution[Work in progress]
 Access Protocol Docs are in early development.
-If you find something that’s not working, [open an issue on GitHub](https://github.com/Access-Labs-Inc/docs/issues/new/choose) or let us know on [Discord](https://t.co/m5az5ip4vs).
+If you find something that’s not working, [open an issue on GitHub](https://github.com/Access-Labs-Inc/docs/issues/new/choose) or let us know on [Discord](https://discord.gg/access-protocol-1001837380044587118).
 :::
 
 
