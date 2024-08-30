@@ -80,7 +80,39 @@ curl https://go-api.accessprotocol.co/user/{address}/pools \
 </TabItem>
 </Tabs>
 
-returns JSON object with all pools and locks:
+returns JSON object with all pools that the user has currently locked ACS to:
+
+Response:
+```json
+{
+  "2hgUBN2BH175iB7vkfGEQUbrFf6XH7LmhVd95LBMsXrw":2200000000,
+  "3ZvSvYThM7775oqziL6ihb6DhjduwMiQ4QAK68qWojWj":1000000000,
+  "5NXhYbc54BtRV57kRcJBiB4xSkaAicN7KzkVuc7NPTuU":0,
+  ...
+}
+```
+
+### User's list of forever locked pools
+
+Params: None
+
+<Tabs>
+<TabItem label="REST">
+```sh
+GET https://go-api.accessprotocol.co/user/{address}/pools/forever
+```
+</TabItem>
+<TabItem label="curl">
+
+```sh
+curl https://go-api.accessprotocol.co/user/{address}/pools/forever \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ACS_API_KEY"
+```
+</TabItem>
+</Tabs>
+
+returns JSON object with all pools where the user has forever locked ACS:
 
 Response:
 ```json
