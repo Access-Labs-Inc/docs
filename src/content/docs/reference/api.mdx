@@ -3,16 +3,16 @@ title: API Reference
 description: Reference of exposed API for creators
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 Before diving into this refererence you should first read [How to use API](../guides/api.md) guide.
 
 ## User details
 
 User details contain metadata that are not present on Solana's blockchain yet are
-important for our HUB (Name, Description, Website, Images...). 
+important for our HUB (Name, Description, Website, Images...).
 
-### Creator's metadata details 
+### Creator's metadata details
 
 Params: None
 
@@ -29,34 +29,36 @@ curl https://go-api.accessprotocol.co/user \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $ACS_API_KEY"
 ```
+
 </TabItem>
 </Tabs>
 
 Response:
+
 ```json
 {
-  "EnabledEmailAutoSubs":false,
-  "Pubkey":"7Q34nmDP1srbYSQJH5b43heZpPtsssiRZa17hLnx5Gqx",
-  "Role":"admin",
+  "EnabledEmailAutoSubs": false,
+  "Pubkey": "7Q34nmDP1srbYSQJH5b43heZpPtsssiRZa17hLnx5Gqx",
+  "Role": "admin",
   "OwnedPool": {
-    "Pubkey":"2hQSDVwJLbtwHzi3CKj8pmiQzLyfKZs5ZDhT1QZdHXv3",
-    "Name":"Telegram",
-    "Benefits":"",
-    "Description":"Telegram test pool",
-    "Website":"https://accessprotocol.co",
-    "Email":"ladi@accessprotocol.co",
-    "LogoImageURL":"...",
-    "HeroImageURL":"...",
-    "ProfileImageURL":"...",
-    "UserPubkey":"7Q34nmDP1srbYSQJH5b43heZpPtsssiRZa17hLnx5Gqx",
-    "CollectEmails":false,
-    "DisplayFE":true,
-    "CreatedAt":"2023-05-29T09:24:27.966677+02:00",
-    "UpdatedAt":"2023-05-29T09:24:27.969427+02:00"
+    "Pubkey": "2hQSDVwJLbtwHzi3CKj8pmiQzLyfKZs5ZDhT1QZdHXv3",
+    "Name": "Telegram",
+    "Benefits": "",
+    "Description": "Telegram test pool",
+    "Website": "https://accessprotocol.co",
+    "Email": "ladi@accessprotocol.co",
+    "LogoImageURL": "...",
+    "HeroImageURL": "...",
+    "ProfileImageURL": "...",
+    "UserPubkey": "7Q34nmDP1srbYSQJH5b43heZpPtsssiRZa17hLnx5Gqx",
+    "CollectEmails": false,
+    "DisplayFE": true,
+    "CreatedAt": "2023-05-29T09:24:27.966677+02:00",
+    "UpdatedAt": "2023-05-29T09:24:27.969427+02:00"
   },
-  "Username":"7Q34...5Gqx",
-  "CreatedAt":"2023-05-29T09:22:52.411033+02:00",
-  "UpdatedAt":"2023-05-29T09:22:52.411033+02:00"
+  "Username": "7Q34...5Gqx",
+  "CreatedAt": "2023-05-29T09:22:52.411033+02:00",
+  "UpdatedAt": "2023-05-29T09:22:52.411033+02:00"
 }
 ```
 
@@ -77,12 +79,14 @@ curl https://go-api.accessprotocol.co/user/{address}/pools \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $ACS_API_KEY"
 ```
+
 </TabItem>
 </Tabs>
 
 returns JSON object with all pools that the user has currently locked ACS to:
 
 Response:
+
 ```json
 {
   "2hgUBN2BH175iB7vkfGEQUbrFf6XH7LmhVd95LBMsXrw":2200000000,
@@ -109,12 +113,14 @@ curl https://go-api.accessprotocol.co/user/{address}/pools/forever \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $ACS_API_KEY"
 ```
+
 </TabItem>
 </Tabs>
 
 returns JSON object with all pools where the user has forever locked ACS:
 
 Response:
+
 ```json
 {
   "2hgUBN2BH175iB7vkfGEQUbrFf6XH7LmhVd95LBMsXrw":2200000000,
@@ -128,11 +134,12 @@ Response:
 
 :::caution[3-step process]
 This process can take a while to prepare the CSV file so we require you
-to: 
-1) Request the file and receive reference ID
-2) Wait a few seconds (allow our backend prepare and upload the file to storage)
-3) Pull the CSV file with reference ID
-:::
+to:
+
+1. Request the file and receive reference ID
+2. Wait a few seconds (allow our backend prepare and upload the file to storage)
+3. Pull the CSV file with reference ID
+   :::
 
 ### Get emails of all supporters
 
@@ -153,6 +160,7 @@ curl -X POST https://go-api.accessprotocol.co/file/emails \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $ACS_API_KEY"
 ```
+
 </TabItem>
 </Tabs>
 
@@ -166,13 +174,13 @@ and you will get JSON with reference ID like so:
 
 How long? It all should be matter of 1-2s yet not guaranteed.
 If you don't want to wait you can create a loop where you try to get
-the file with Step 3 and if it fails (returns 404) you can re-try again with 1s delay. 
+the file with Step 3 and if it fails (returns 404) you can re-try again with 1s delay.
 
 #### Step 3: Download the file
 
 Params:
-- `reference_id` you get it as output of Step 1 above
 
+- `reference_id` you get it as output of Step 1 above
 
 <Tabs>
 <TabItem label="REST">
@@ -187,6 +195,7 @@ curl https://go-api.accessprotocol.co/file/link/{reference_id} \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $ACS_API_KEY"
 ```
+
 </TabItem>
 </Tabs>
 
@@ -211,6 +220,7 @@ curl -X POST https://go-api.accessprotocol.co/file/supporters \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $ACS_API_KEY"
 ```
+
 </TabItem>
 </Tabs>
 
@@ -224,13 +234,13 @@ and you will get JSON with reference ID like so:
 
 How long? It all should be matter of 1-2s yet not guaranteed.
 If you don't want to wait you can create a loop where you try to get
-the file with Step 3 and if it fails (returns 404) you can re-try again with 1s delay. 
+the file with Step 3 and if it fails (returns 404) you can re-try again with 1s delay.
 
 #### Step 3: Download the file
 
 Params:
-- `reference_id` you get it as output of Step 1 above
 
+- `reference_id` you get it as output of Step 1 above
 
 <Tabs>
 <TabItem label="REST">
@@ -245,6 +255,7 @@ curl https://go-api.accessprotocol.co/file/link/{reference_id} \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $ACS_API_KEY"
 ```
+
 </TabItem>
 </Tabs>
 
@@ -267,6 +278,7 @@ curl -X POST https://go-api.accessprotocol.co/file/rewards \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $ACS_API_KEY"
 ```
+
 </TabItem>
 </Tabs>
 
@@ -280,13 +292,13 @@ and you will get JSON with reference ID like so:
 
 How long? It all should be matter of 1-2s yet not guaranteed.
 If you don't want to wait you can create a loop where you try to get
-the file with Step 3 and if it fails (returns 404) you can re-try again with 1s delay. 
+the file with Step 3 and if it fails (returns 404) you can re-try again with 1s delay.
 
 #### Step 3: Download the file
 
 Params:
-- `reference_id` you get it as output of Step 1 above
 
+- `reference_id` you get it as output of Step 1 above
 
 <Tabs>
 <TabItem label="REST">
@@ -301,10 +313,11 @@ curl https://go-api.accessprotocol.co/file/link/{reference_id} \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $ACS_API_KEY"
 ```
+
 </TabItem>
 </Tabs>
 
-## Pools 
+## Pools
 
 ### Get list of active pools
 
@@ -322,6 +335,7 @@ GET https://go-api.accessprotocol.co/pools
 curl -X GET https://go-api.accessprotocol.co/pools \
     -H "Content-Type: application/json" \
 ```
+
 </TabItem>
 </Tabs>
 
@@ -368,6 +382,7 @@ GET https://go-api.accessprotocol.co/pools/featured
 curl -X GET https://go-api.accessprotocol.co/pools/featured \
     -H "Content-Type: application/json" \
 ```
+
 </TabItem>
 </Tabs>
 
@@ -406,6 +421,7 @@ GET https://go-api.accessprotocol.co/pools/user_count
 curl -X GET https://go-api.accessprotocol.co/pools/user_count \
     -H "Content-Type: application/json" \
 ```
+
 </TabItem>
 </Tabs>
 
@@ -435,6 +451,7 @@ GET https://go-api.accessprotocol.co/pools/locked
 curl -X GET https://go-api.accessprotocol.co/pools/locked \
     -H "Content-Type: application/json" \
 ```
+
 </TabItem>
 </Tabs>
 
@@ -464,6 +481,7 @@ GET https://go-api.accessprotocol.co/pools/rewards
 curl -X GET https://go-api.accessprotocol.co/pools/rewards \
     -H "Content-Type: application/json" \
 ```
+
 </TabItem>
 </Tabs>
 
@@ -498,6 +516,7 @@ GET https://go-api.accessprotocol.co/pool/{address}
 curl -X GET https://go-api.accessprotocol.co/pool/{address} \
     -H "Content-Type: application/json" \
 ```
+
 </TabItem>
 </Tabs>
 
@@ -550,6 +569,7 @@ GET https://go-api.accessprotocol.co/token/supply/total
 curl -X GET https://go-api.accessprotocol.co/token/supply/total \
     -H "Content-Type: application/json" \
 ```
+
 </TabItem>
 </Tabs>
 
@@ -575,6 +595,7 @@ GET https://go-api.accessprotocol.co/token/supply/circulating
 curl -X GET https://go-api.accessprotocol.co/token/supply/circulating \
     -H "Content-Type: application/json" \
 ```
+
 </TabItem>
 </Tabs>
 
@@ -602,6 +623,7 @@ GET https://go-api.accessprotocol.co/stats/{kind}
 curl -X GET https://go-api.accessprotocol.co/token/supply/total \
     -H "Content-Type: application/json" \
 ```
+
 </TabItem>
 </Tabs>
 
