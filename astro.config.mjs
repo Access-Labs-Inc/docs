@@ -21,7 +21,8 @@ export default defineConfig({
           label: 'Creator Guides',
           items: [
             { label: 'Become creator', link: '/creator-guides/new-creator/' },
-            { label: 'Publish content on Hub', link: '/creator-guides/publish-on-hub/' },
+            { label: 'Mint art on HUB', link: '/creator-guides/mint-on-hub/' },
+            { label: 'Publish content on HUB', link: '/creator-guides/publish-on-hub/' },
             { label: 'How to use API', link: '/creator-guides/api/' },
           ],
         },
