@@ -1,32 +1,30 @@
 ---
-title: How to use API
-description: How to access Access Protocol API endpoints
+title: Access Dev API guide
+description: How to access Access Protocol Dev API endpoints
 ---
 
-In order to communiate with our private API endpoints you'll have to have JWT token.
+The Access Dev API is less stable and more likely to change often than the Access API.
+In order to communiate with access Dev API endpoints you'll need a JWT token signed by us that acts as your API key.
 
-## What is JWT token?
-You can read about it here: [JWT token introduction](https://jwt.io/introduction/).
-
-## Get JWT token
+## Get your JWT token
 
 1. Visit ["HUB"](https://hub.accessprotocol.co/)
 2. Login with your creator's wallet
-3. Navigate to ["Creator Dashboard"](https://hub.accessprotocol.co/creator):
+3. Navigate to ["Pool profile > API key"](https://hub.accessprotocol.co/en/profile/pool)
 
-![Creators Dashboard Screenshot](../../../assets/api/creators_dashboard/navigation.webp)
+![Creators Dashboard Screenshot](../../../assets/api/creators_dashboard/navigation.jpg)
 
 4. Click "Copy" button on API key field:
 
-![API key Screenshot](../../../assets/api/creators_dashboard/api_key_field.webp)
+![API key Screenshot](../../../assets/api/creators_dashboard/api_key_field.jpg)
 
 5. Click copy button that will copy the JWT token into your clipboard
 
-This is JWT token that never expires so be careful where and with whom you share it. It should stay as secure as possible.
+This token never expires so be careful where and with whom you share it. It should stay as secure as possible and never be included in any client-side code.
 
-## Example of using JWT token
+## Example request
 
-You can test your JWT token with CLI `curl` like this (--KEY-- with actual JWT token):
+You can test your JWT token using `curl` from the command line (replace `--KEY--` with the actual token):
 
 ```bash
 export ACS_API_KEY=--KEY--
