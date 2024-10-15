@@ -23,8 +23,7 @@ export default defineConfig({
             { label: 'Become creator', link: '/creator-guides/new-creator/' },
             { label: 'Mint art on HUB', link: '/creator-guides/mint-on-hub/' },
             { label: 'Publish content on HUB', link: '/creator-guides/publish-on-hub/' },
-            { label: 'Access API', link: '/creator-guides/access-api/' },
-            { label: 'Access Dev API', link: '/creator-guides/api/' },
+            { label: 'Access API', link: '/creator-guides/access-api/' }
           ],
         },
         {
@@ -34,15 +33,7 @@ export default defineConfig({
             { label: 'How to use Node.js with CLI examples', link: '/integration-guides/custom_integration/' },
             { label: 'Start new Next.js app with template', link: '/integration-guides/nextjs_integration/' },
           ],
-        },
-        {
-          label: 'Solana',
-          autogenerate: { directory: 'solana' },
-        },
-        {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
-        },
+        }
       ],
     }),
   ],
