@@ -4,7 +4,11 @@ import introduction from '../markdown/basics/introduction.md?raw'
 import deeperExplanation from '../markdown/basics/deeper-explanation.md?raw'
 import becomeACreator from '../markdown/creators/become-a-creator.md?raw'
 import mintArt from '../markdown/creators/mint-art.md?raw'
-
+import publishContent from '../markdown/creators/publish-content.md?raw'
+import accessApi from '../markdown/creators/access-api.md?raw'
+import quickStart from '../markdown/integration-guides/quick-start.md?raw'
+import nodejsExamples from '../markdown/integration-guides/node-js-examples.md?raw'
+import nextjsIntegration from '../markdown/integration-guides/nextjs-integration.md?raw'
 import rehypeRaw from 'rehype-raw'
 import { useEffect, useState } from 'react'
 
@@ -53,8 +57,40 @@ const chapters: Chapter[] = [
         markdown: mintArt,
         id: 'mint-art',
       },
+      {
+        title: "Publish content on Access Hub",
+        markdown: publishContent,
+        id: 'publish-content',
+      },
+      {
+        title: "Access API",
+        markdown: accessApi,
+        id: 'access-api',
+      },
     ],
     href: '/guide#for-creators',
+  },
+  {
+    title: "Integration guides",
+    description: "How to integrate Access Protocol into your app",
+    items: [
+      {
+        title: "Quick start",
+        markdown: quickStart,
+        id: 'quick-start',
+      },
+      {
+        title: "Node.js examples",
+        markdown: nodejsExamples,
+        id: 'nodejs-examples',
+      },
+      {
+        title: "Next.js integration",
+        markdown: nextjsIntegration,
+        id: 'nextjs-integration',
+      },
+    ],
+    href: '/guide#integration-guides',
   },
 ]
 
@@ -72,7 +108,14 @@ export function Guide() {
   
   useEffect(() => {
     const handleHashChange = () => {
+      const sectionId = window.location.hash.split('#')[2];
       setCurrentHash(window.location.hash.split('#')[1]);
+      if(sectionId) {
+        const section = document.getElementById(sectionId);
+        if(section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -89,7 +132,7 @@ export function Guide() {
     <div className="w-full h-full bg-theme-bg-secondary flex-1 flex">
       <GuideSidebar items={navigation} showSearch={false} />
       <main className="flex-1">
-        <div className="p-8 max-w-3xl mx-auto">
+        <div className="p-8 max-w-4xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-4xl">{currentChapter.title}</h1>
             <div className="flex gap-4">
@@ -112,9 +155,11 @@ export function Guide() {
             </div>
           </div>
 
+          <div className="h-px bg-theme-border my-8" />
+
           {currentChapter.items.map((item, index) => (
             <div key={item.id}>
-              <section id={item.id}>
+              <section id={item.id} className="md-section">
                 <ReactMarkdown
                   rehypePlugins={[rehypeRaw]}
                   components={{
@@ -123,6 +168,9 @@ export function Guide() {
                     p: ({children}) => <p className="text-theme-text-secondary mb-4">{children}</p>,
                     ol: ({children}) => <ol className="list-decimal pl-6 mb-4 text-theme-text-secondary">{children}</ol>,
                     li: ({children}) => <li className="mb-2">{children}</li>,
+                    pre: ({children}) => <pre className="my-2 bg-theme-bg-secondary p-3 shadow-sm border border-theme-border rounded-md overflow-x-auto">{children}</pre>,
+                    code: ({children}) => <code className="bg-theme-bg-secondary p-1 rounded-md text-sm">{children}</code>,
+                    blockquote: ({children}) => <div className="bg-theme-bg-secondary p-4 rounded-md border-l-4 border-theme-accent">{children}</div>,
                     a: ({children, href}) => (
                       <a href={href} className="text-theme-accent hover:underline">
                         {children}
@@ -139,6 +187,7 @@ export function Guide() {
             </div>
           ))}
         </div>
+        <div className="h-[40vh]" />
       </main>
     </div>
   )

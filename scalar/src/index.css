@@ -14,9 +14,9 @@
   }
 
   .dark-mode {
-    --background: #111827;
+    --background: #1f1f1f;
     --background-secondary: #0f0f0f;
-    --background-tertiary: #374151;
+    --background-tertiary: #202020;
     --text-primary: #f9fafb;
     --text-secondary: #d1d5db;
     --accent: #60a5fa;
@@ -51,6 +51,7 @@
   color: #131313;
   border-left: 4px solid #ff9100;
   padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .md-title {
@@ -60,4 +61,10 @@
 .md-description {
   @apply text-theme-text-secondary mb-4;
   display: none;
+}
+
+.md-section {
+  img {
+    max-width: 645px;
+  }
 }
