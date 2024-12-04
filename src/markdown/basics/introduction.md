@@ -7,7 +7,7 @@ Introduction to Access Protocol ecosystem
 </div>
 
 <div className="md-warning">
-Access Protocol Docs are in early development.
+Access Protocol documentation is in early development.
 If you find something that's not working, <a href="https://github.com/Access-Labs-Inc/docs/issues/new/choose">open an issue on GitHub</a> or let us know on <a href="https://discord.gg/access-protocol-1001837380044587118">Discord</a>.
 </div>
 

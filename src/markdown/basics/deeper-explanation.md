@@ -27,34 +27,33 @@ This innovative fee-based model enables creators to immediately start earning re
 make their content available to a larger portion of their user base.
 By reducing barriers to monetization, the digital content market could potentially increase by a factor of ten.
 
-## The Technical Backbone of Access Protocol
+## Technical details of Access Protocol
 
 Access Protocol, a groundbreaking innovation in digital content monetization,
-is underpinned by advanced technology, namely the Solana blockchain and smart contracts.
+is underpinned by advanced technology, namely the Solana blockchain.
 Solana's high-speed, high-capacity network makes it an ideal blockchain for Access Protocol's microtransaction-intensive model,
 accommodating the large volumes of token transfers that occur between content creators and consumers.
 
 The architecture of Access Protocol involves users staking ACS tokens, the native cryptocurrency of the platform,
-into a content publisher's pool, aptly named the [StakePool](https://github.com/Access-Labs-Inc/access-protocol).
+into a content publisher's pool.
 These tokens are distributed to both stakers and content publishers according to an inflation schedule defined in the
-CentralState of the protocol.
-Additionally, the protocol includes the ability to create and sell bonds through a BondAccount,
+contral state of the protocol.
+Additionally, the protocol includes the ability to create and sell bonds through a bond account,
 enabling the sale of locked tokens with linear vesting.
 
-The ACCESS Protocol utilizes smart contracts to facilitate these complex interactions.
-The smart contract code is stored in the program folder and can be generated using Rust doc,
-a tool included in the Rust programming language. This smart contract governs the staking of
-ACS tokens, the distribution of rewards, and the creation and sale of bonds, ensuring that these processes run smoothly and securely.
+Access Protocol utilizes Solana programs (also known as smart contracts) to facilitate these complex interactions.
+The main Access Protocol Solana program governs the staking of ACS tokens, the distribution of rewards, and the creation
+and sale of bonds. All these operations happen on-chain, ensuring transparency, security and decentralization of the protocol.
+The source code of the Access Protocol Solana programs is available on GitHub under the
+[core program](https://github.com/Access-Labs-Inc/access-protocol) and
+[transferable subscription program](https://github.com/Access-Labs-Inc/access-protocol-nft) repositories.
 
-To accommodate the web3 wallet authentication and authorization requirements, publishers need to adapt their backend infrastructures.
-This authentication process relies on signature verifications. As such, the backends folder of the protocol provides an example
-implementation of a REST API using a Solana wallet for authentication and JWT authorization, which can be implemented
-in Javascript, Rust, Go, and Python. It is recommended to use either Javascript or Rust due to their superior Solana tooling.
-
-Moreover, Javascript bindings of the smart contract are contained in the js folder, which is published on NPM,
-a popular package manager for Javascript. These bindings allow developers to interact with the smart
-contract from a Javascript environment. This makes it easier for developers to integrate the ACCESS Protocol into web-based platforms, extending its usability.
-
-In conclusion, the implementation of Access Protocol on Solana showcases the power of blockchain and
-smart contracts in transforming the digital content monetization landscape.
-This revolutionary approach leverages cutting-edge technology to provide a fairer and more effective system for content creators and consumers alike
+Publishers can integrate Access Protocol on their websites and web-based applications to provide exclusive,
+paywalled content to their Access subscribers.
+Access Protocol can be integrated using our JavaScript bindings together with
+[Solana wallet connect](https://solana.com/developers/cookbook/wallets/connect-wallet-react).
+JavaScript bindings for our core and transferable subscription programs are available on npm in the `@accessprotocol/js`
+and `@accessprotocol/nft` packages.
+For publishers that do not want to implement wallet connect on their website, there is the Acccess Protocol payment gate
+integration.
+For more detailed information on the possible integrations, see [the integrations section](/guide#integration-guides).
