@@ -43,7 +43,7 @@ const chapters: Chapter[] = [
     href: '/guide#basics',
   },
   {
-    title: 'For Creators',
+    title: 'For creators',
     description: 'How to use Access Protocol as a creator',
     items: [
       {
