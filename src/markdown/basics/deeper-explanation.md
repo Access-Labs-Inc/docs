@@ -39,7 +39,7 @@ To unsubscribe, users simply unstake their tokens.
 The protocol also supports forever subscriptions, in which case the staked ACS is burned and cannot be withdrawn.
 
 ACS tokens are distributed to both stakers and content creators according to an inflation schedule defined in the
-central state of the protocol's Solana program. Inflation reward is split 50/50 between subscribers and the pool owner,
+central state of the protocol's Solana program. Inflation reward is split between subscribers and the pool owner,
 and it is proportional to the amount of ACS staked.
 
 Access Protocol utilizes Solana programs (also known as smart contracts) for the essential functionality of the protocol.
