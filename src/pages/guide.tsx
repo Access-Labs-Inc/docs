@@ -123,10 +123,10 @@ export function Guide() {
   const nextChapter = chapterIndex < chapters.length - 1 ? chapters[chapterIndex + 1] : null;
 
   return (
-    <div className="w-full h-full bg-theme-bg-secondary flex-1 flex">
+    <div className="w-full h-full bg-theme-bg-secondary flex-1 flex flex-col md:flex-row">
       <GuideSidebar items={navigation} showSearch={false} />
-      <main className="flex-1">
-        <div className="p-8 max-w-4xl mx-auto">
+      <main className="flex-1 md:pt-0 pt-[57px]">
+        <div className="p-4 md:p-8 max-w-4xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-4xl">{currentChapter.title}</h1>
             <div className="flex gap-4">
@@ -159,6 +159,7 @@ export function Guide() {
                   components={{
                     h1: ({children}) => <h1 className="text-3xl font-bold text-theme-text mb-6">{children}</h1>,
                     h2: ({children}) => <h2 className="text-2xl text-theme-text mt-8 mb-4">{children}</h2>,
+                    h3: ({children}) => <h2 className="text-xl text-theme-text mt-8 mb-4">{children}</h2>,
                     p: ({children}) => <p className="text-theme-text-secondary mb-4">{children}</p>,
                     ol: ({children}) => <ol className="list-decimal pl-6 mb-4 text-theme-text-secondary">{children}</ol>,
                     li: ({children}) => <li className="mb-2">{children}</li>,
