@@ -5,10 +5,9 @@ import deeperExplanation from '../markdown/basics/deeper-explanation.md?raw'
 import becomeACreator from '../markdown/creators/become-a-creator.md?raw'
 import mintArt from '../markdown/creators/mint-art.md?raw'
 import publishContent from '../markdown/creators/publish-content.md?raw'
-import accessApi from '../markdown/creators/access-api.md?raw'
-import quickStart from '../markdown/integration-guides/quick-start.md?raw'
-import nodejsExamples from '../markdown/integration-guides/node-js-examples.md?raw'
-import nextjsIntegration from '../markdown/integration-guides/nextjs-integration.md?raw'
+import accessApi from '../markdown/integration-guides/access-api.md?raw'
+import paymentGate from '../markdown/integration-guides/payment-gate.md?raw'
+import javascriptBindings from '../markdown/integration-guides/javascript-bindings.md?raw'
 import rehypeRaw from 'rehype-raw'
 import { useEffect, useState } from 'react'
 
@@ -62,32 +61,27 @@ const chapters: Chapter[] = [
         markdown: publishContent,
         id: 'publish-content',
       },
-      {
-        title: "Access API",
-        markdown: accessApi,
-        id: 'access-api',
-      },
     ],
     href: '/guide#for-creators',
   },
   {
-    title: "Integration guides",
+    title: "For developers",
     description: "How to integrate Access Protocol into your app",
     items: [
       {
-        title: "Quick start",
-        markdown: quickStart,
-        id: 'quick-start',
+        title: "Payment gate",
+        markdown: paymentGate,
+        id: "payment-gate",
       },
       {
-        title: "Node.js examples",
-        markdown: nodejsExamples,
-        id: 'nodejs-examples',
+        title: "JavaScript bindings",
+        markdown: javascriptBindings,
+        id: 'javascript-bindings',
       },
       {
-        title: "Next.js integration",
-        markdown: nextjsIntegration,
-        id: 'nextjs-integration',
+        title: "Access API",
+        markdown: accessApi,
+        id: 'access-api',
       },
     ],
     href: '/guide#integration-guides',
