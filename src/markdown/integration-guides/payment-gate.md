@@ -5,6 +5,6 @@ The Access payment gate is the easiest way to integrate Access Protocol with you
 It is similar to traditional payment portals familiar to web2 users and does not require
 your website to support wallet connect.
 
-The payment gate is available in an npm package `@accessprotocol/payment-gate`.
+The payment gate is available in the npm package `@accessprotocol/payment-gate` and the source code is available [on GitHub](https://github.com/Access-Labs-Inc/payment-gate-sdk).
 For a demo of payment gate integration, see the [payment gate demo GitHub repository](https://github.com/Access-Labs-Inc/payment-gate-demo).
 
