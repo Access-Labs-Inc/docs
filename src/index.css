@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --background-secondary: #f9fafb;
+    --background-tertiary: #f3f4f6;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --accent: #3b82f6;
+    --border: #dfdfdf;
+  }
+
+  .dark-mode {
+    --background: #1f1f1f;
+    --background-secondary: #0f0f0f;
+    --background-tertiary: #202020;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --accent: #60a5fa;
+    --border: #2d2d2d;
+  }
+  body {
+    @apply bg-theme-bg text-theme-text;
+  }
+}
+
+@layer components {
+  .tab-bar {
+    @apply flex items-center justify-between p-4 bg-theme-bg-secondary border-b border-theme-border;
+  }
+
+  .tab {
+    @apply px-4 py-2 text-theme-text-secondary rounded-md 
+           hover:bg-theme-bg-tertiary transition-colors;
+  }
+
+  .tab.active {
+    @apply bg-theme-bg text-theme-text shadow-sm;
+  }
+
+  .content-card {
+    @apply bg-theme-bg rounded-lg p-8 shadow-sm;
+  }
+}
+/* Markdown extensions */
+.md-warning {
+  background-color: #f0f0f0;
+  color: #131313;
+  border-left: 4px solid #ff9100;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.md-title {
+  @apply text-3xl text-theme-text mt-8 mb-4;
+}
+
+.md-description {
+  @apply text-theme-text-secondary mb-4;
+  display: none;
+}
+
+.md-section {
+  img {
+    max-width: 645px;
+  }
+}
