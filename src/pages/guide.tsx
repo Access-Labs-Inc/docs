@@ -92,23 +92,173 @@ const chapters: Chapter[] = [
     description: "Create and deploy agents using Access Intelligence",
     items: [
       {
-        title: "CoinGecko Agent Guide",
+        title: "Getting started",
         markdown: coingeckoAgentGuide,
-        id: 'coingecko-agent-guide',
+        id: 'getting-started',
+      },
+      {
+        title: "Basic Information",
+        markdown: coingeckoAgentGuide,
+        id: 'basic-information',
+      },
+      {
+        title: "Knowledge Base",
+        markdown: coingeckoAgentGuide,
+        id: 'knowledge-base',
+      },
+      {
+        title: "Automations",
+        markdown: coingeckoAgentGuide,
+        id: 'automations',
+      },
+      {
+        title: "Create a post",
+        markdown: coingeckoAgentGuide,
+        id: 'create-a-post',
+      },
+      {
+        title: "Interact with users",
+        markdown: coingeckoAgentGuide,
+        id: 'interact-with-users',
+      },
+      {
+        title: "Character Information",
+        markdown: coingeckoAgentGuide,
+        id: 'character-information',
+      },
+      {
+        title: "Querying and engaging",
+        markdown: coingeckoAgentGuide,
+        id: 'querying-and-engaging-with-your-agent',
+      },
+      {
+        title: "Setting up Automations with News Sources",
+        markdown: coingeckoAgentGuide,
+        id: 'setting-up-automations-with-news-sources',
+      },
+      {
+        title: "CoinGecko Available Endpoints",
+        markdown: coingeckoAgentGuide,
+        id: 'coingecko-available-endpoints',
+      },
+      {
+        title: "The Block Endpoints",
+        markdown: coingeckoAgentGuide,
+        id: 'the-block-endpoints',
+      },
+      {
+        title: "News",
+        markdown: coingeckoAgentGuide,
+        id: 'news',
+      },
+      {
+        title: "Company Data",
+        markdown: coingeckoAgentGuide,
+        id: 'company-data',
+      },
+      {
+        title: "Foresight News Endpoints",
+        markdown: coingeckoAgentGuide,
+        id: 'foresight-news-endpoints',
       },
     ],
     href: '/guide#access-intelligence',
   },
 ]
 
-const navigation: GuideSidebarProps['items'] = chapters.map(chapter => ({
-  title: chapter.title,
-  href: chapter.href,
-  items: chapter.items.map(item => ({
-    title: item.title,
-    href: `${chapter.href}#${item.id}`,
-  }))
-}))
+const navigation: GuideSidebarProps['items'] = chapters.map(chapter => {
+  if (chapter.title === "Access Intelligence") {
+    return {
+      title: chapter.title,
+      href: chapter.href,
+      items: [
+        {
+          title: "Getting started",
+          href: `${chapter.href}#getting-started`,
+        },
+        {
+          title: "Basic Information",
+          href: `${chapter.href}#basic-information`,
+        },
+        {
+          title: "Knowledge Base",
+          href: `${chapter.href}#knowledge-base`,
+        },
+        {
+          title: "Automations",
+          href: `${chapter.href}#automations`,
+          items: [
+            {
+              title: "Create a post",
+              href: `${chapter.href}#create-a-post`,
+            },
+            {
+              title: "Interact with users",
+              href: `${chapter.href}#interact-with-users`,
+            }
+          ]
+        },
+        {
+          title: "Character Information",
+          href: `${chapter.href}#character-information`,
+        },
+        {
+          title: "Querying and engaging",
+          href: `${chapter.href}#querying-and-engaging-with-your-agent`,
+        },
+        {
+          title: "Setting up Automations with News Sources",
+          href: `${chapter.href}#setting-up-automations-with-news-sources`,
+        },
+        {
+          title: "CoinGecko Available Endpoints",
+          href: `${chapter.href}#coingecko-available-endpoints`,
+        },
+        {
+          title: "The Block Endpoints",
+          href: `${chapter.href}#the-block-endpoints`,
+          items: [
+            {
+              title: "Data",
+              href: `${chapter.href}#data`,
+            },
+            {
+              title: "News",
+              href: `${chapter.href}#news`,
+            },
+            {
+              title: "Company Data",
+              href: `${chapter.href}#company-data`,
+            }
+          ]
+        },
+        {
+          title: "Foresight News Endpoints",
+          href: `${chapter.href}#foresight-news-endpoints`,
+          items: [
+            {
+              title: "News",
+              href: `${chapter.href}#news`,
+            },
+            {
+              title: "Foresight Wiki",
+              href: `${chapter.href}#foresight-wiki`,
+            }
+          ]
+        }
+      ]
+    };
+  }
+  
+  return {
+    title: chapter.title,
+    href: chapter.href,
+    items: chapter.items.map(item => ({
+      title: item.title,
+      href: `${chapter.href}#${item.id}`,
+    }))
+  };
+})
 
 export function Guide() {
   const [currentHash, setCurrentHash] = useState(window.location.hash.split('#')[1]);
@@ -199,4 +349,4 @@ export function Guide() {
       </main>
     </div>
   )
-} 
+}     
