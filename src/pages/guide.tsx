@@ -8,6 +8,7 @@ import publishContent from '../markdown/creators/publish-content.md?raw'
 import accessApi from '../markdown/integration-guides/access-api.md?raw'
 import paymentGate from '../markdown/integration-guides/payment-gate.md?raw'
 import javascriptBindings from '../markdown/integration-guides/javascript-bindings.md?raw'
+import coingeckoAgentGuide from '../markdown/access-intelligence/coingecko-agent-guide.md?raw'
 import rehypeRaw from 'rehype-raw'
 import { useEffect, useState } from 'react'
 
@@ -85,6 +86,18 @@ const chapters: Chapter[] = [
       },
     ],
     href: '/guide#integration-guides',
+  },
+  {
+    title: "Access Intelligence",
+    description: "Create and deploy agents using Access Intelligence",
+    items: [
+      {
+        title: "CoinGecko Agent Guide",
+        markdown: coingeckoAgentGuide,
+        id: 'coingecko-agent-guide',
+      },
+    ],
+    href: '/guide#access-intelligence',
   },
 ]
 
